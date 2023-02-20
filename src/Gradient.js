@@ -340,12 +340,12 @@ class Gradient {
         for (let e = 1; e < colors.length; e += 1) {
             const waveLayerUniform = new Uniform(this._minigl, 'struct', {
                 color: new Uniform(this._minigl, 'vec3', colors[e]),
-                noiseFreq: new Uniform(this._minigl, 'vec2', [2 + e / colors.length, 3 + e / colors.length]),
-                noiseSpeed: new Uniform(this._minigl, 'float', 11 + 0.3 * e),
-                noiseFlow: new Uniform(this._minigl, 'float', 6.5 + 0.3 * e),
-                noiseSeed: new Uniform(this._minigl, 'float', this.seed + 10 * e),
-                noiseFloor: new Uniform(this._minigl, 'float', 0.1),
-                noiseCeil: new Uniform(this._minigl, 'float', 0.63 + 0.07 * e)
+                noiseFreq: new Uniform(this._minigl, 'vec2', [20 + e / colors.length, 30 + e / colors.length]),
+                noiseSpeed: new Uniform(this._minigl, 'float', 11 + 30.3 * e),
+                noiseFlow: new Uniform(this._minigl, 'float', 6.5 + 300.3 * e),
+                noiseSeed: new Uniform(this._minigl, 'float', this.seed + 1110 * e),
+                noiseFloor: new Uniform(this._minigl, 'float', 30.1),
+                noiseCeil: new Uniform(this._minigl, 'float', 0.63 + 1.07 * e)
             });
 
             this.uniforms.u_waveLayers.value.push(waveLayerUniform);
