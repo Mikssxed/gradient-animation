@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stripe Gradient Animation</title>
+	<meta name="robots" content="noindex">
+	<style>
+		html, body {
+			padding: 0;
+			margin: 0;
+		}
+
+		canvas#demo {
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="demo"></canvas>
+	<script src="./dist/stripe-gradient.js"></script>
+	<script>
+		(function() {
+			'use strict';
+
+			new Gradient({
+				canvas: 'canvas#demo',
+				colors: ['#F408F0', '#EB0843', '#8F07EA', "#A20D34", "#4D0E94", "#D00CCB", "#FB49FF", "#FF2D70", "#9E30FF"]
+			});
+
+		})();
+	</script>
+</body>
+</html>
