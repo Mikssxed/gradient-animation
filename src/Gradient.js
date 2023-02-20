@@ -29,7 +29,7 @@ class Gradient {
         density: [.08, .16],
 
         angle: 0,
-        amplitude: 320,
+        amplitude: 600,
         static: false, // Enable non-animating gradient
 
         loadedClass: 'is-loaded',
@@ -41,7 +41,7 @@ class Gradient {
 
     vertexShader = null;
     uniforms = null;
-    time = 1253106; // @todo work out why this number has been choosen.
+    time = 125310600; // @todo work out why this number has been choosen.
     mesh = null;
     material = null;
     geometry = null;
@@ -52,12 +52,12 @@ class Gradient {
     scrollObserver = null;
     width = null;
     minWidth = 1111;
-    height = 600;
+    height = 400;
     xSegCount = null;
     ySegCount = null;
-    freqX = 0.00054;
+    freqX = 0.00094;
     freqY = 0.00059;
-    freqDelta = 0.00990;
+    freqDelta = 0.00001;
     activeColors = [1, 1, 1, 1];
 
     /**
@@ -247,7 +247,7 @@ class Gradient {
         let lastFrame = this.getFlag('lastFrame', 0);
 
         if (!shouldSkipFrame) {
-            this.time += Math.min(event - lastFrame, 1000 / 15);
+            this.time += Math.min(event - lastFrame, 1000 / 2);
             lastFrame = this.setFlag('lastFrame', event);
             this.mesh.material.uniforms.u_time.value = this.time;
             this._minigl.render();
@@ -340,12 +340,12 @@ class Gradient {
         for (let e = 1; e < colors.length; e += 1) {
             const waveLayerUniform = new Uniform(this._minigl, 'struct', {
                 color: new Uniform(this._minigl, 'vec3', colors[e]),
-                noiseFreq: new Uniform(this._minigl, 'vec2', [20 + e / colors.length, 30 + e / colors.length]),
-                noiseSpeed: new Uniform(this._minigl, 'float', 11 + 30.3 * e),
-                noiseFlow: new Uniform(this._minigl, 'float', 6.5 + 300.3 * e),
-                noiseSeed: new Uniform(this._minigl, 'float', this.seed + 1110 * e),
-                noiseFloor: new Uniform(this._minigl, 'float', 30.1),
-                noiseCeil: new Uniform(this._minigl, 'float', 0.63 + 1.07 * e)
+                noiseFreq: new Uniform(this._minigl, 'vec2', [2 + e / colors.length, 3 + e / colors.length]),
+                noiseSpeed: new Uniform(this._minigl, 'float', 11 + 0.3 * e),
+                noiseFlow: new Uniform(this._minigl, 'float', 6.5 + 0.3 * e),
+                noiseSeed: new Uniform(this._minigl, 'float', this.seed + 10 * e),
+                noiseFloor: new Uniform(this._minigl, 'float', 0.1),
+                noiseCeil: new Uniform(this._minigl, 'float', 0.63 + 0.07 * e)
             });
 
             this.uniforms.u_waveLayers.value.push(waveLayerUniform);
